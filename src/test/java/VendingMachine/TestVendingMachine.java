@@ -55,4 +55,18 @@ public class TestVendingMachine {
         machine.insertMoney(1.00);
         assertEquals(1.50, machine.getInsertedMoney(), 0.001);
     }
+    @Test
+    void testInsufficientMoney() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        machine.addSnack(coke);
+        machine.selectSnack("Coke");
+        machine.insertMoney(1.00);
+
+        assertInstanceOf(WaitingForMoneyState.class, machine.getState());
+
+        assertEquals(1.00, machine.getInsertedMoney(), 0.001);
+        assertEquals(5, coke.getQuantity());
+    }
 }
