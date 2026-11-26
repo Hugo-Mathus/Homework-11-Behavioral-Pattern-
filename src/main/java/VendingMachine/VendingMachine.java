@@ -85,4 +85,10 @@ public class VendingMachine {
         insertedMoney = 0.0;
         setState(new IdleState());
     }
+
+    public void returnChange() {
+        returnedMoney = insertedMoney - selectedSnack.getPrice();
+        if (returnedMoney > 0) {System.out.println("Change returned: $"+ returnedMoney);
+        }
+    }
 }

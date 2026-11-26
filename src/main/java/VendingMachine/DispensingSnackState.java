@@ -18,6 +18,7 @@ public class DispensingSnackState implements StateOfVendingMachine {
 
         if(result) {
             System.out.println(selectedSnack.getName() + " dispensed successfully");
+            machine.returnChange();
         }
         else {
             System.out.println("Unable to dispense" + selectedSnack.getName());
