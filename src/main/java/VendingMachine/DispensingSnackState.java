@@ -14,5 +14,13 @@ public class DispensingSnackState implements StateOfVendingMachine {
 
     @Override
     public void dispenseSnack(VendingMachine machine) {
+        Snack selectedSnack = machine.getSelectedSnack();
+
+        boolean result = machine.getSnackDispenser().dispenseSnack(selectedSnack.getName(), machine.getInsertedMoney());
+
+        if(result) {
+            System.out.println(selectedSnack.getName() + " dispensed successfully");
+        }
+
     }
 }
