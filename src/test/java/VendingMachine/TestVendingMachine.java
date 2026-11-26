@@ -117,4 +117,40 @@ public class TestVendingMachine {
         assertEquals(0.0, machine.getInsertedMoney(), 0.001);
         assertEquals(0, snickers.getQuantity());
     }
+
+    @Test
+    void testResetAfterPurchase() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        machine.addSnack(coke);
+        machine.setSnackDispenser(new CokeHandler(coke, null));
+
+        machine.selectSnack("Coke");
+        machine.insertMoney(2.00);
+        machine.dispenseSnack();
+
+        assertInstanceOf(IdleState.class, machine.getState());
+        assertNull(machine.getSelectedSnack());
+        assertEquals(0.0, machine.getInsertedMoney(), 0.001);
+        assertEquals(4, coke.getQuantity());
+    }
+
+    @Test
+    void testResetAfterRefund() {
+        VendingMachine machine = new VendingMachine();
+        Snack snickers = new Snack("Snickers", 1.75, 0);
+
+        machine.addSnack(snickers);
+        machine.setSnackDispenser(new SnickersHandler(snickers, null));
+
+        machine.selectSnack("Snickers");
+        machine.insertMoney(1.75);
+        machine.dispenseSnack();
+
+        assertInstanceOf(IdleState.class, machine.getState());
+        assertNull(machine.getSelectedSnack());
+        assertEquals(0.0, machine.getInsertedMoney(), 0.001);
+        assertEquals(1.75, machine.getReturnedMoney(), 0.001);
+    }
 }
