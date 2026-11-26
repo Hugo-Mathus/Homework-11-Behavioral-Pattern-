@@ -27,7 +27,18 @@ public class TestVendingMachine {
         machine.selectSnack("Coke");
 
         assertSame(coke, machine.getSelectedSnack());
-        assertInstanceOf(WaitingForMoneyState.class,
-                machine.getState());
+        assertInstanceOf(WaitingForMoneyState.class, machine.getState());
+    }
+
+    @Test
+    void testInvalidSnackSelection() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        machine.addSnack(coke);
+        machine.selectSnack("Sprite");
+
+        assertNull(machine.getSelectedSnack());
+        assertInstanceOf(IdleState.class, machine.getState());
     }
 }
