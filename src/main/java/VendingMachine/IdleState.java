@@ -5,8 +5,15 @@ public class IdleState implements StateOfVendingMachine {
     @Override
     public void selectSnack(VendingMachine machine, String snackName) {
         Snack snack = machine.getSnack(snackName);
-        machine.setSelectedSnack(snack);
-        machine.setState(new WaitingForMoneyState());
+
+        if (snack != null) {
+            machine.setSelectedSnack(snack);
+            machine.setState(new WaitingForMoneyState());
+        }
+        else {
+            System.out.println("Invalid Snack Selection");
+        }
+
     }
 
     @Override
