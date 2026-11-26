@@ -24,6 +24,6 @@ public class Snack {
     }
 
     public boolean isAvailable(){
-        return false;
+        return quantity>0;
     }
 }
