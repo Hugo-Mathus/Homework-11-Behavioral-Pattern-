@@ -8,9 +8,11 @@ public class VendingMachine {
     private StateOfVendingMachine state;
     private Map<String, Snack> snacks;
     private Snack selectedSnack;
+    private double insertedMoney;
     public VendingMachine() {
         this.state = new IdleState();
         this.snacks = new HashMap<>();
+        this.insertedMoney = 0.0;
     }
 
     public StateOfVendingMachine getState() {
@@ -41,5 +43,15 @@ public class VendingMachine {
         getState().selectSnack(this, snackName);
     }
 
+    public double getInsertedMoney() {
+        return insertedMoney;
+    }
+
+    public void addMoney(double amount) {
+    }
+
+    public void insertMoney(double amount) {
+        getState().insertMoney(this, amount);
+    }
 
 }
