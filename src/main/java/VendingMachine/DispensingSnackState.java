@@ -23,6 +23,6 @@ public class DispensingSnackState implements StateOfVendingMachine {
             System.out.println("Unable to dispense" + selectedSnack.getName());
             machine.returnMoney();
         }
-
+        machine.resetTransaction();
     }
 }
