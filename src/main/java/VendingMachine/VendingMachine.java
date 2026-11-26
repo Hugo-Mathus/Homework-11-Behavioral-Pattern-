@@ -75,5 +75,9 @@ public class VendingMachine {
     }
 
     public void returnMoney() {
+        returnedMoney = insertedMoney;
+        insertedMoney = 0.0;
+
+        System.out.println("Money returned: $"+ returnedMoney);
     }
 }

@@ -3,13 +3,11 @@ package VendingMachine;
 public class DispensingSnackState implements StateOfVendingMachine {
 
     @Override
-    public void selectSnack(VendingMachine machine,
-                            String snackName) {
+    public void selectSnack(VendingMachine machine, String snackName) {
     }
 
     @Override
-    public void insertMoney(VendingMachine machine,
-                            double amount) {
+    public void insertMoney(VendingMachine machine, double amount) {
     }
 
     @Override
@@ -20,6 +18,10 @@ public class DispensingSnackState implements StateOfVendingMachine {
 
         if(result) {
             System.out.println(selectedSnack.getName() + " dispensed successfully");
+        }
+        else {
+            System.out.println("Unable to dispense" + selectedSnack.getName());
+            machine.returnMoney();
         }
 
     }
