@@ -8,6 +8,7 @@ public class WaitingForMoneyState implements StateOfVendingMachine {
 
     @Override
     public void insertMoney(VendingMachine machine, double amount) {
+        machine.addMoney(amount);
     }
 
     @Override

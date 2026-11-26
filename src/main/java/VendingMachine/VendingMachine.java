@@ -48,6 +48,7 @@ public class VendingMachine {
     }
 
     public void addMoney(double amount) {
+        this.insertedMoney += amount;
     }
 
     public void insertMoney(double amount) {
