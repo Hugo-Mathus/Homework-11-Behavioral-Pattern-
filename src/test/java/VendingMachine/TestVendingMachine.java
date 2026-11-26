@@ -76,13 +76,16 @@ public class TestVendingMachine {
         Snack coke = new Snack("Coke", 2.00, 5);
 
         machine.addSnack(coke);
+        machine.setSnackDispenser(new CokeHandler(coke, null));
+
         machine.selectSnack("Coke");
         machine.insertMoney(1.00);
-
         assertInstanceOf(WaitingForMoneyState.class, machine.getState());
+
         machine.insertMoney(1.00);
-        assertInstanceOf(DispensingSnackState.class, machine.getState());
-        assertEquals(2.00, machine.getInsertedMoney(), 0.001);
+        assertInstanceOf(IdleState.class, machine.getState());
+        assertEquals(0.00, machine.getInsertedMoney(), 0.001);
+        assertEquals(4, coke.getQuantity());
     }
 
     @Test

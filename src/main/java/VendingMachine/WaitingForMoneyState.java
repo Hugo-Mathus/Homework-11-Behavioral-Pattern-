@@ -16,6 +16,10 @@ public class WaitingForMoneyState implements StateOfVendingMachine {
         machine.addMoney(amount);
         if (machine.getInsertedMoney() >= machine.getSelectedSnack().getPrice()) {
             machine.setState(new DispensingSnackState());
+            machine.dispenseSnack();
+        }
+        else{
+            System.out.printf("Remaining amount: $%.2f%n", machine.getSelectedSnack().getPrice() - machine.getInsertedMoney());
         }
     }
 
