@@ -97,7 +97,24 @@ public class TestVendingMachine {
         machine.selectSnack("Coke");
         machine.insertMoney(2.00);
         machine.dispenseSnack();
-
         assertEquals(4, coke.getQuantity());
+    }
+
+    @Test
+    void testRefundOutOfStock() {
+        VendingMachine machine = new VendingMachine();
+        Snack snickers = new Snack("Snickers", 1.75, 0);
+        machine.addSnack(snickers);
+
+        SnackDispenseHandler handler = new SnickersHandler(snickers, null);
+        machine.setSnackDispenser(handler);
+
+        machine.selectSnack("Snickers");
+        machine.insertMoney(1.75);
+        machine.dispenseSnack();
+
+        assertEquals(1.75, machine.getReturnedMoney(), 0.001);
+        assertEquals(0.0, machine.getInsertedMoney(), 0.001);
+        assertEquals(0, snickers.getQuantity());
     }
 }

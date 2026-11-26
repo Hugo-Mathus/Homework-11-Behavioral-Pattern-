@@ -10,7 +10,7 @@ public class VendingMachine {
     private Snack selectedSnack;
     private double insertedMoney;
     private SnackDispenseHandler snackDispenser;
-
+    private double returnedMoney;
 
     public VendingMachine() {
         this.state = new IdleState();
@@ -68,5 +68,12 @@ public class VendingMachine {
 
     public void dispenseSnack() {
         getState().dispenseSnack(this);
+    }
+
+    public double getReturnedMoney() {
+        return returnedMoney;
+    }
+
+    public void returnMoney() {
     }
 }
