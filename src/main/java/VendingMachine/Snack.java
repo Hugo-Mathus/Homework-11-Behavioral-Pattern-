@@ -22,4 +22,8 @@ public class Snack {
     public double getPrice(){
         return price;
     }
+
+    public boolean isAvailable(){
+        return false;
+    }
 }

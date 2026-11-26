@@ -11,4 +11,10 @@ public class SnackTest {
         assertEquals(2.00,snack.getPrice(),0.001);
         assertEquals(5,snack.getQuantity());
     }
+
+    @Test
+    public void testAvailability(){
+        Snack snack = new Snack("Coke",2.00,5);
+        assertEquals(true,snack.isAvailable());
+    }
 }
