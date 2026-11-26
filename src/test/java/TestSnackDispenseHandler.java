@@ -66,4 +66,18 @@ public class TestSnackDispenseHandler {
         assertEquals(5, coke.getQuantity());
         assertEquals(4, pepsi.getQuantity());
     }
+
+    @Test
+    void testNonexistentSnack() {
+        Snack coke = new Snack("Coke", 2.00, 5);
+        Snack pepsi = new Snack("Pepsi", 2.00, 5);
+
+        SnackDispenseHandler handler = new CokeHandler(coke, new PepsiHandler(pepsi, null));
+
+        boolean result = handler.dispenseSnack("Sprite", 2.00);
+
+        assertFalse(result);
+        assertEquals(5, coke.getQuantity());
+        assertEquals(5, pepsi.getQuantity());
+    }
 }
