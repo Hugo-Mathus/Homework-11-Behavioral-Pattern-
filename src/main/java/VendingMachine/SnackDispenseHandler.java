@@ -7,6 +7,7 @@ public abstract class SnackDispenseHandler {
 
     public SnackDispenseHandler(Snack snack, SnackDispenseHandler next) {
         this.snack = snack;
+        this.nextHandler = next;
     }
 
     public SnackDispenseHandler getNextHandler() {
