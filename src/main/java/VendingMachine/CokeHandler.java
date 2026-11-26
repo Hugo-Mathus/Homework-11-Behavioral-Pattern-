@@ -8,7 +8,6 @@ public class CokeHandler extends SnackDispenseHandler {
     @Override
     public boolean dispenseSnack(String snackName, double money) {
         if (snackName.equals("Coke")) {
-
             return processDispense(money);
         }
         return super.dispenseSnack(snackName, money);
