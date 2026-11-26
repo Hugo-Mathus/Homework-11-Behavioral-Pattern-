@@ -9,6 +9,9 @@ public class WaitingForMoneyState implements StateOfVendingMachine {
     @Override
     public void insertMoney(VendingMachine machine, double amount) {
         machine.addMoney(amount);
+        if(machine.getInsertedMoney() >= machine.getSelectedSnack().getPrice()) {
+            machine.setState(new DispensingSnackState());
+        }
     }
 
     @Override
