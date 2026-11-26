@@ -17,4 +17,11 @@ public class SnackTest {
         Snack snack = new Snack("Coke",2.00,5);
         assertEquals(true,snack.isAvailable());
     }
+
+    @Test
+    public void testDecreaseQuantity(){
+        Snack snack = new Snack("Coke",2.00,5);
+        snack.decreaseQuantity();
+        assertEquals(4,snack.getQuantity());
+    }
 }
