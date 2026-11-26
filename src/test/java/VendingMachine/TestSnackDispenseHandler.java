@@ -98,4 +98,34 @@ public class TestSnackDispenseHandler {
         assertEquals(3, kitkat.getQuantity());
         assertEquals(0, snickers.getQuantity());
     }
+
+    @Test
+    void testDispenseCheetos() {
+        Snack cheetos = new Snack("Cheetos", 1.50, 3);
+        SnackDispenseHandler handler =
+                new CheetosHandler(cheetos, null);
+
+        assertTrue(handler.dispenseSnack("Cheetos", 1.50));
+        assertEquals(2, cheetos.getQuantity());
+    }
+
+    @Test
+    void testDispenseDoritos() {
+        Snack doritos = new Snack("Doritos", 2.00, 3);
+        SnackDispenseHandler handler =
+                new DoritosHandler(doritos, null);
+
+        assertTrue(handler.dispenseSnack("Doritos", 2.00));
+        assertEquals(2, doritos.getQuantity());
+    }
+
+    @Test
+    void testDispenseKitKat() {
+        Snack kitkat = new Snack("KitKat", 1.50, 3);
+        SnackDispenseHandler handler =
+                new KitKatHandler(kitkat, null);
+
+        assertTrue(handler.dispenseSnack("KitKat", 1.50));
+        assertEquals(2, kitkat.getQuantity());
+    }
 }
