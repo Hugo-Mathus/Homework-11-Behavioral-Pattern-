@@ -22,12 +22,23 @@ public class TestSnackDispenseHandler {
     @Test
     void testDispenseCoke() {
         Snack coke = new Snack("Coke", 2.00, 5);
-
         SnackDispenseHandler handler = new CokeHandler(coke, null);
 
         boolean result = handler.dispenseSnack("Coke", 2.00);
 
         assertTrue(result);
         assertEquals(4, coke.getQuantity());
+    }
+    @Test
+    void testInsufficientMoney() {
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        SnackDispenseHandler handler =
+                new CokeHandler(coke, null);
+
+        boolean result = handler.dispenseSnack("Coke", 1.00);
+
+        assertFalse(result);
+        assertEquals(5, coke.getQuantity());
     }
 }
