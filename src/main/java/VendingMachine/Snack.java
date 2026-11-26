@@ -6,18 +6,20 @@ public class Snack {
     private double price;
 
     public Snack(String name,double price, int quantity) {
-
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     public int getQuantity() {
-        return 0;
+        return quantity;
     }
 
     public String getName(){
-        return null;
+        return name;
     }
 
     public double getPrice(){
-        return 0.0;
+        return price;
     }
 }
