@@ -8,11 +8,7 @@ public class PepsiHandler extends SnackDispenseHandler {
     @Override
     public boolean dispenseSnack(String snackName, double money) {
         if (snackName.equals("Pepsi")) {
-            if(money >= snack.getPrice() && snack.isAvailable()) {
-                snack.decreaseQuantity();
-                return true;
-            }
-            return false;
+            return processDispense(money);
         }
         return super.dispenseSnack(snackName, money);
     }

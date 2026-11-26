@@ -20,4 +20,12 @@ public abstract class SnackDispenseHandler {
         }
         return false;
     }
+
+    protected boolean processDispense(double money) {
+        if (money >= snack.getPrice() && snack.isAvailable()) {
+            snack.decreaseQuantity();
+            return true;
+        }
+        return false;
+    }
 }
