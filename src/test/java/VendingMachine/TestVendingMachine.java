@@ -153,4 +153,22 @@ public class TestVendingMachine {
         assertEquals(0.0, machine.getInsertedMoney(), 0.001);
         assertEquals(1.75, machine.getReturnedMoney(), 0.001);
     }
+
+    @Test
+    void testReturnChange() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        machine.addSnack(coke);
+        machine.setSnackDispenser(new CokeHandler(coke, null));
+
+        machine.selectSnack("Coke");
+        machine.insertMoney(5.00);
+        machine.dispenseSnack();
+
+        assertEquals(3.00, machine.getReturnedMoney(), 0.001);
+        assertEquals(0.00, machine.getInsertedMoney(), 0.001);
+        assertEquals(4, coke.getQuantity());
+        assertInstanceOf(IdleState.class, machine.getState());
+    }
 }
