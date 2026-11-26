@@ -13,14 +13,15 @@ public class IdleState implements StateOfVendingMachine {
         else {
             System.out.println("Invalid Snack Selection");
         }
-
     }
 
     @Override
     public void insertMoney(VendingMachine machine, double amount) {
+        System.out.println("Please select a snack first.");
     }
 
     @Override
     public void dispenseSnack(VendingMachine machine) {
+        System.out.println("Please select a snack first.");
     }
 }
