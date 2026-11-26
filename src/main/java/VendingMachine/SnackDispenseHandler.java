@@ -15,6 +15,9 @@ public abstract class SnackDispenseHandler {
     }
 
     public boolean dispenseSnack(String snackName, double money) {
+        if(nextHandler != null) {
+            return nextHandler.dispenseSnack(snackName, money);
+        }
         return false;
     }
 }
