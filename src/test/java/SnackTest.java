@@ -24,4 +24,16 @@ public class SnackTest {
         snack.decreaseQuantity();
         assertEquals(4,snack.getQuantity());
     }
+
+    @Test
+    void testOutOfStock() {
+        Snack snack = new Snack("Snickers", 1.75, 1);
+
+        assertTrue(snack.isAvailable());
+
+        snack.decreaseQuantity();
+
+        assertEquals(0, snack.getQuantity());
+        assertFalse(snack.isAvailable());
+    }
 }
