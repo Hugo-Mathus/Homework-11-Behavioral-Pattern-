@@ -17,4 +17,17 @@ public class TestVendingMachine {
         machine.addSnack(coke);
         assertSame(coke, machine.getSnack("Coke"));
     }
+
+    @Test
+    void testSelectValidSnack() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        machine.addSnack(coke);
+        machine.selectSnack("Coke");
+
+        assertSame(coke, machine.getSelectedSnack());
+        assertInstanceOf(WaitingForMoneyState.class,
+                machine.getState());
+    }
 }
