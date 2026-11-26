@@ -36,4 +36,14 @@ public class SnackTest {
         assertEquals(0, snack.getQuantity());
         assertFalse(snack.isAvailable());
     }
+
+    @Test
+    void testPreventNegativeQuantity() {
+        Snack snack = new Snack("Snickers", 1.75, 1);
+
+        snack.decreaseQuantity();
+        snack.decreaseQuantity();
+
+        assertEquals(0, snack.getQuantity());
+    }
 }
