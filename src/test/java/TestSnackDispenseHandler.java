@@ -1,3 +1,4 @@
+import VendingMachine.CokeHandler;
 import VendingMachine.PepsiHandler;
 import VendingMachine.Snack;
 import VendingMachine.SnackDispenseHandler;
@@ -13,8 +14,20 @@ public class TestSnackDispenseHandler {
         Snack pepsi = new Snack("Pepsi",2.00,5);
 
         SnackDispenseHandler pepsiHandler = new PepsiHandler(pepsi,null);
-        SnackDispenseHandler cokeHandler = new PepsiHandler(coke,pepsiHandler);
+        SnackDispenseHandler cokeHandler = new CokeHandler(coke,pepsiHandler);
 
         assertSame(pepsiHandler,cokeHandler.getNextHandler());
+    }
+
+    @Test
+    void testDispenseCoke() {
+        Snack coke = new Snack("Coke", 2.00, 5);
+
+        SnackDispenseHandler handler = new CokeHandler(coke, null);
+
+        boolean result = handler.dispenseSnack("Coke", 2.00);
+
+        assertTrue(result);
+        assertEquals(4, coke.getQuantity());
     }
 }
