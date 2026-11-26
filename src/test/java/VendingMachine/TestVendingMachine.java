@@ -9,4 +9,12 @@ public class TestVendingMachine {
         VendingMachine machine = new VendingMachine();
         assertInstanceOf(IdleState.class, machine.getState());
     }
+
+    @Test
+    void testAddAndGetSnack() {
+        VendingMachine machine = new VendingMachine();
+        Snack coke = new Snack("Coke", 2.00, 5);
+        machine.addSnack(coke);
+        assertSame(coke, machine.getSnack("Coke"));
+    }
 }

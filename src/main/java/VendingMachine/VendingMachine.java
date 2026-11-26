@@ -11,4 +11,11 @@ public class VendingMachine {
     public StateOfVendingMachine getState() {
         return state;
     }
+
+    public void addSnack(Snack snack) {
+    }
+
+    public Snack getSnack(String snackName) {
+        return null;
+    }
 }
